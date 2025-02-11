@@ -4,7 +4,7 @@ template = "page.html"
 
 ## About Me
 
-I'm a developer living in Phoenix, AZ
+I'm a nerd living in Phoenix, AZ
 
 I've worked on some awesome datacenter projects
 
