@@ -187,3 +187,11 @@ footer {
 .footer .social-links a:hover svg {
     opacity: 0.8;
 }
+
+@media only screen and (max-width: 768px) {
+    img {
+        /* OR */
+        width: 90vw; /* Makes the image 50% of the viewport width */
+        height: 60vw; /* Makes the image 50% of the viewport width */
+    }
+}
