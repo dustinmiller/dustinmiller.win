@@ -1,0 +1,10 @@
+title = "Dustin Miller's weblog"
+description = "A simple link blog"
+base_url = "https://dustinmiller.win"
+
+taxonomies = [
+    { name = "tags", feed = true },
+]
+
+[extra]
+author = "Dustin Miller"

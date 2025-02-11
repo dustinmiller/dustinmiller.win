@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Blog Posts</h1>
+    <ul class="post-list">
+        {% for post in section.pages %}
+            <li>
+                <a href="{{ post.permalink }}">{{ post.title }}</a>
+                <p>{{ post.description }}</p>
+                <small>{{ post.date | date(format="%Y-%m-%d") }}</small>
+                {% if post.taxonomies.tags %}
+                    <div class="tags">
+                        {% for tag in post.taxonomies.tags %}
+                            <span class="tag">{{ tag }}</span>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
