@@ -5,12 +5,12 @@
     <p>This is a simple blog for links and interesting things.</p>
     <h3>Latest Posts</h3>
     <ul>
-        {% set blog_section = get_section(path="blog/_index.md") %}
-        {% for post in blog_section.pages | slice(end=5) %}
-            <li>
-              <small>{{ post.date | date(format="%Y-%m-%d") }}</small>
-              <a href="{{ post.permalink }}">{{ post.title }}</a>
-            </li>
-        {% endfor %}
+        {%- set blog_section = get_section(path="blog/_index.md") %}
+        {%- for post in blog_section.pages | slice(end=5) %}
+      <li>
+        <small>{{ post.date | date(format="%Y-%m-%d") }}</small>
+        <a href="{{ post.permalink }}">{{ post.title }}</a>
+      </li>
+      {%- endfor %}
     </ul>
-{% endblock %}
+{%- endblock %}
