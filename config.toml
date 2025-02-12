@@ -3,6 +3,10 @@ description = "A simple link blog"
 base_url = "https://dustinmiller.win"
 
 generate_feeds = true
+feed_filenames = [
+  "atom.xml",
+  "rss.xml"
+]
 
 taxonomies = [
     { name = "tags", feed = true },
