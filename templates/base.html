@@ -11,25 +11,7 @@
     <title>{{ config.title }}</title>
     <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48dGV4dCB5PSIuOWVtIiBmb250LXNpemU9IjkwIj7wn5OIPC90ZXh0Pjwvc3ZnPg==">
     <style>
-      .post-list .tags{margin-top:.5rem}
-      .post-list li a:hover{text-decoration:underline}
-      .post-list li a{text-decoration:none;color:#333;font-size:1.25rem;font-weight:500}
-      .post-list li small{display:block;color:#666;font-size:.9rem;margin-top:.25rem}
-      .post-list li{margin-bottom:1.5rem}
-      .post-list{list-style:none;padding:0}
-      @media only screen and (max-width:768px){img{width:90vw;height:60vw}}
-      blockquote:after,blockquote:before{font-family:Arial,sans-serif;font-size:82px;font-style:normal;position:absolute}
-      blockquote:after{content:'\201D';bottom:-50px;right:0}
-      blockquote:before{content:'\201C';top:-6px;left:-28px}
-      blockquote{color:#2c3e50;font-size:28px;line-height:95%;position:relative;margin:10% auto 5%;border-bottom:2px dotted #c6d1bf;background-color:#f0f0f0;padding:1px 5px 0 8px;border-radius:.2em}
-      body{font-family:sans-serif;max-width:800px;margin:0 auto;padding:20px;line-height:1.6;color:#333;background-color:#fff}
-      cite:before{content:'\2013';text-align:center}
-      footer{text-align:center;margin-top:2rem;padding-top:1rem;border-top:1px solid #eaeaea;color:#666}
-      header nav a:hover{color:#000;text-decoration:underline}
-      header nav a.logo{font-size:1.25rem;font-weight:600}
-      header nav a{text-decoration:none;color:#333;font-weight:500}
-      header nav{display:flex;justify-content:space-around;align-items:center}
-      header{margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid #eaeaea}
+    {{load_data(path="static/styles.css") | indent | safe }}
     </style>
     {%- block rss %}
     <link rel="alternate" type="application/atom+xml" title="RSS" href="{{ get_url(path="atom.xml", trailing_slash=false) }}">
