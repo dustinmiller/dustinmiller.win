@@ -195,3 +195,46 @@ footer {
         height: 60vw; /* Makes the image 50% of the viewport width */
     }
 }
+
+
+blockquote {
+  color: #2c3e50;
+  font-size: 28px;
+  line-height: 95%;
+  position: relative;
+  /* font-family: Georgia; */
+  margin: 10% auto;
+  margin-bottom: 5%;
+  border-bottom: 2px dotted #C6D1BF;
+  background-color: #f0f0f0;
+  padding-top: 1px;
+  padding-right: 5px;
+  padding-left: 8px;
+  border-radius: .2em;
+
+  &:before {
+    content: '\201C';
+    position: absolute;
+    top: -6px;
+    left: -28px;
+    font-family: Arial, sans-serif;
+    font-size: 82px;
+    font-style: normal;
+  }
+
+  &:after {
+    content: '\201D';
+    position: absolute;
+    bottom: -50px;
+    right: 0;
+    font-family: Arial, sans-serif;
+    font-size: 82px;
+    font-style: normal;
+  }
+}
+
+cite {
+  &:before {
+    content: '\2013';
+  }
+}
