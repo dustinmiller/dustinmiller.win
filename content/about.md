@@ -1,7 +1,7 @@
 +++
 template = "page.html"
 +++
-# About Me
+# About me
 
 I'm a nerd living in Phoenix, AZ
 
