@@ -17,8 +17,7 @@ I like music and traveling
 - Automation
 - Self hosting
 
-<div style="float: right; margin-top: -420px">
-  <pre>
+<pre style="float: right; margin-top: -420px">
                     @@@@@@@@@@                    
                   @@@@@@@@@@@@@@@@@@              
                  @@@@@@@@@@@@@@@@@@@@             
@@ -41,4 +40,4 @@ I like music and traveling
            @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@       
           @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@      
           @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@      
-</div>
+</pre>
