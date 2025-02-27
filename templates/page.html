@@ -1,9 +1,12 @@
 {% extends "base.html" %}
-
-{% block content %}
-<h1 class="title">
-  {{ page.title }}
-</h1>
-<p class="subtitle"><strong>{{ page.date }}</strong></p>
+{%- block content %}
+{%- if page.title %}
+  <h1 class="title">
+    {{ page.title }}
+  </h1>
+{% endif %}
+{% if page.date %}
+  <p class="subtitle"><strong>{{ page.date }}</strong></p>
+{% endif %}
 {{ page.content | safe }}
 {% endblock content %}
