@@ -66,6 +66,20 @@
         </a>
         &copy; {{ now() | date(format="%Y") }} {{ config.extra.author }}
     </div>
+    <button class="dark-mode-toggle" id="toggle-theme">🌓</button>
   </footer>
 </body>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const toggleButton = document.getElementById('toggle-theme');
+        const body = document.body;
+
+        toggleButton.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            document.querySelectorAll('header, footer, button').forEach(el => {
+                el.classList.toggle('dark-mode');
+            });
+        });
+    });
+</script>
 </html>
