@@ -23,3 +23,7 @@ cite:before{content:'\2013';text-align:center}
 .footer .social-links{display:flex;justify-content:center;gap:.5rem}
 .footer .social-links svg{width:18px;height:18px;fill:currentColor;opacity:1;transition:opacity .2s ease}
 .footer .social-links a:hover svg{opacity:.8}
+a{color:var(--accent)}
+a:focus-visible,a:hover{text-decoration:none}
+.dark-mode{background-color:#292b36;color:#90ee90}
+.dark-mode-toggle{position:fixed;top:20px;right:20px;border:0}
