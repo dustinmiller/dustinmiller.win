@@ -68,20 +68,24 @@
         </a>
         &copy; {{ now() | date(format="%Y") }} {{ config.extra.author }}
     </div>
-    <button class="dark-mode-toggle" id="toggle-theme">🌓</button>
+    <button class="dark-mode-toggle" id="theme-toggle">🌓</button>
   </footer>
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const toggleButton = document.getElementById('toggle-theme');
-        const body = document.body;
-
-        toggleButton.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
-            document.querySelectorAll('header, footer, button').forEach(el => {
-                el.classList.toggle('dark-mode');
-            });
-        });
-    });
+const themeToggle = document.getElementById('theme-toggle');
+function setTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem('theme', theme);
+}
+function toggleTheme() {
+  const currentTheme = localStorage.getItem('theme') || 'light';
+  const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+  setTheme(newTheme);
+}
+themeToggle.addEventListener('click', toggleTheme);
+document.addEventListener('DOMContentLoaded', () => {
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  setTheme(savedTheme);
+});
 </script>
 </body>
 </html>
