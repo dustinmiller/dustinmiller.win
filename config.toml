@@ -1,16 +1,24 @@
-title = "Dustin Miller's weblog"
-description = "A simple link blog"
 base_url = "https://dustinmiller.win"
-
+title = "Dustin Miller's weblog"
+description = "This is a simple blog for links and interesting things."
+default_language = "en"
+minify_html = false
+taxonomies = [
+    { name = "tags", feed = true },
+]
+compile_sass = true
 generate_feeds = true
 feed_filenames = [
   "atom.xml",
   "rss.xml"
 ]
 
-taxonomies = [
-    { name = "tags", feed = true },
-]
+[markdown]
+highlight_code = true
+highlight_theme = "dracula"
 
 [extra]
 author = "Dustin Miller"
+email = "dustin@stonks.win"
+github = "dustinmiller"
+linkedin = "dustinm"
