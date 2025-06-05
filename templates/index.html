@@ -1,16 +1,17 @@
 {% extends "base.html" %}
-
 {% block content %}
-    <h2>Welcome</h2>
-    <p>This is a simple blog for links and interesting things.</p>
-    <h3>Latest Posts</h3>
-    <ul>
-        {%- set blog_section = get_section(path="blog/_index.md") %}
-        {%- for post in blog_section.pages | slice(end=5) %}
-      <li>
-        <small>{{ post.date | date(format="%Y-%m-%d") }}</small>
-        <a href="{{ post.permalink }}">{{ post.title }}</a>
-      </li>
-      {%- endfor %}
-    </ul>
-{%- endblock %}
+      <h2>Welcome</h2>
+
+      <p>{{ config.description }}</p>
+      {% set blog_section = get_section(path="blog/_index.md") %}{% if blog_section.pages %}
+      <h3>Latest Posts</h3>
+
+      <ul class="post-list">
+        {% for page in blog_section.pages | slice(end=5) -%}
+        <li>
+          {% if page.date %}<small>{{ page.date | date(format="%Y-%m-%d") }}</small>{% endif %}
+          <a href="{{ page.permalink }}">{{ page.title }}</a>
+        </li>
+      {% endfor -%}
+      </ul>
+      {% endif %}{% endblock content %}

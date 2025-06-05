@@ -1,9 +1,0 @@
-{% extends "base.html" %}
-
-{% block content %}
-<div class="post">
-    <div class="post-date">{{ page.date | date(format="%Y-%m-%d") }}</div>
-    <a href="{{ page.extra.link }}" class="post-link">{{ page.title }}</a>
-    <div class="post-description">{{ page.description }}</div>
-</div>
-{% endblock content %}

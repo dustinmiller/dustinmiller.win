@@ -1,21 +1,21 @@
 {% extends "base.html" %}
-
 {% block content %}
-    <h1>Posts</h1>
-    <ul class="post-list">
-        {% for post in section.pages %}
-            <li>
-                <a href="{{ post.permalink }}">{{ post.title }}</a>
-                <p>{{ post.description }}</p>
-                <small>{{ post.date | date(format="%Y-%m-%d") }}</small>
-                {% if post.taxonomies.tags %}
-                    <div class="tags">
-                        {% for tag in post.taxonomies.tags %}
-                            <span class="tag">{{ tag }}</span>
-                        {% endfor %}
-                    </div>
-                {% endif %}
-            </li>
+      <h2>{{ section.title }}</h2>
+      {% if section.description %}<p>{{ section.description }}</p>{% endif %}
+      {% if section.content %}
+      <div class="section-content">
+        {{ section.content | safe }}
+      </div>
+      {% endif %}
+      {% if section.pages %}
+      <ul class="post-list">
+        {% for page in section.pages %}
+        <li>
+          {% if page.date %}<small>{{ page.date | date(format="%Y-%m-%d") }}</small>{% endif %}
+          <a href="{{ page.permalink }}">{{ page.title }}</a>
+          {% if page.summary %}<p>{{ page.summary }}</p>{% endif %}
+        </li>
         {% endfor %}
-    </ul>
-{% endblock %}
+      </ul>
+      {% endif %}
+{% endblock content %}

@@ -2,23 +2,65 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="description" content="Dustin Miller's weblog">
-    <meta property="og:image" content="https://stonks.win/stonks.gif">
-    <meta property="og:title" content="Dustin Miller's weblog">
+    <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ config.description }}{% endif %}">
+    <meta property="og:title" content="{% if page.title %}{{ page.title }} | {% endif %}{{ config.title }}">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://dustinmiller.win">
+    <meta property="og:url" content="{{ config.base_url }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ config.title }}</title>
+    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ config.title }}</title>
     <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48dGV4dCB5PSIuOWVtIiBmb250LXNpemU9IjkwIj7wn5OIPC90ZXh0Pjwvc3ZnPg==">
-    <style>
-    {{load_data(path="static/styles.css") | indent | safe }}
-    </style>
-    {%- block rss %}
     <link rel="alternate" type="application/atom+xml" title="RSS" href="{{ get_url(path="atom.xml", trailing_slash=false) }}">
     <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ get_url(path="rss.xml", trailing_slash=false) }}">
-    {%- endblock %}
+    <style>
+      @media only screen and (max-width:768px){img{width:90vw;height:60vw}}
+      body{font-family:sans-serif;max-width:840px;margin:0 auto;padding:20px;line-height:1.6;background-color:var(--background-color);color:var(--text-color)}
+      header{margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid var(--comment, #eaeaea)}
+      header h1{padding-left:5%}
+       .page-header h1{margin-left:-12%;font-size:2.8rem;font-weight:900;color:var(--purple);letter-spacing:-0.02em;line-height:0.9}
+      .page-meta{color:var(--comment);font-size:0.75rem;font-style:italic;margin-top:-1.5rem;text-align:right;margin-right:-12%;opacity:0.7;text-transform:uppercase;letter-spacing:0.1em;font-weight:500}
+      header nav{display:flex;justify-content:space-around;align-items:center}
+      header nav a{text-decoration:none;font-weight:500}
+      header nav a.logo{font-size:1.25rem;font-weight:600}
+      header nav a:hover{text-decoration:underline}
+      .post-list{list-style:none;padding:0}
+      .post-list li{margin-bottom:1.5rem}
+      .post-list li a{text-decoration:none;font-size:1.25rem;font-weight:500}
+      .post-list li a:hover{text-decoration:underline}
+      .post-list li small{display:block;color:#666;font-size:.9rem;margin-top:.25rem}
+      .post-list .tags{margin-top:.5rem}
+      footer{text-align:center;margin-top:2rem;padding-top:1rem;border-top:1px solid var(--comment, #eaeaea);color:var(--comment, #666)}
+      blockquote{color:var(--text-color);font-size:28px;line-height:95%;position:relative;margin:10% auto 5%;border-bottom:2px dotted var(--comment);background-color:var(--comment, #f0f0f0);padding:1px 5px 0 8px;border-radius:.2em;opacity:0.8}
+      blockquote:after,blockquote:before{font-family:Arial,sans-serif;font-size:82px;font-style:normal;position:absolute}
+      blockquote:before{content:'\201C';top:-6px;left:-28px}
+      blockquote:after{content:'\201D';bottom:-50px;right:0}
+      cite:before{content:'\2013';text-align:center}
+      .footer{width:100%;text-align:center;padding:1rem 0;font-size:.875rem;color:#6b7280;background-color:transparent}
+      .footer a{color:#6b7280;transition:color .2s ease}
+      .footer a:hover{color:#4b5563}
+      .footer .social-links{display:flex;justify-content:center;gap:.5rem}
+      .footer .social-links svg{width:18px;height:18px;fill:currentColor;opacity:1;transition:opacity .2s ease}
+      .footer .social-links a:hover svg{opacity:.8}
+      a{color:var(--accent);text-decoration:none}
+      a:focus-visible,a:hover{text-decoration:underline}
+      :root{--background-color:#282a36;--text-color:#f8f8f2;--accent:#bd93f9;--comment:#6272a4;--cyan:#8be9fd;--green:#50fa7b;--orange:#ffb86c;--pink:#ff79c6;--purple:#bd93f9;--red:#ff5555;--yellow:#f1fa8c}
+      .page-content{line-height:1.8;margin-top:3rem}
+      .page-content p:first-of-type{font-size:1.1rem;font-weight:400;line-height:1.6;margin-bottom:1.5rem}
+      .page-content h2 + p,
+      .page-content h3 + p{text-indent:1.5rem}
+      .page-content h1,.page-content h2,.page-content h3{margin:2rem 0 1rem 0}
+      .page-content code{background-color:var(--comment, #f4f4f4);color:var(--cyan, #333);padding:0.2rem 0.4rem;border-radius:3px;font-family:'Courier New',monospace}
+      .page-content pre{background-color:var(--comment, #f4f4f4);color:var(--text-color);padding:1rem;border-radius:6px;overflow-x:auto}
+      [data-theme=dark] .page-content code{background-color:#44475a;color:var(--cyan)}
+      [data-theme=dark] .page-content pre{background-color:#44475a;color:var(--text-color)}
+      .taxonomy-grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+      .taxonomy-item{padding:1rem;border:1px solid #eee;border-radius:4px}
+      [data-theme=dark] .taxonomy-item{border-color:#444}
+      .page-content img{border-radius:8px;max-width:75%;height:auto;display:block;margin:1.5rem auto}
+      .page-header{border-bottom:none}
+    </style>
+    {% if config.generate_feeds %}<link rel="alternate" type="application/atom+xml" title="RSS" href="{{ get_url(path="atom.xml") }}">{% endif %}
   </head>
-<!--
+  <!--
 ▓█████▄  █    ██   ██████ ▄▄▄█████▓ ██▓ ███▄    █     ███▄ ▄███▓ ██▓ ██▓     ██▓    ▓█████  ██▀███
 ▒██▀ ██▌ ██  ▓██▒▒██    ▒ ▓  ██▒ ▓▒▓██▒ ██ ▀█   █    ▓██▒▀█▀ ██▒▓██▒▓██▒    ▓██▒    ▓█   ▀ ▓██ ▒ ██▒
 ░██   █▌▓██  ▒██░░ ▓██▄   ▒ ▓██░ ▒░▒██▒▓██  ▀█ ██▒   ▓██    ▓██░▒██▒▒██░    ▒██░    ▒███   ▓██ ░▄█ ▒
@@ -29,63 +71,29 @@
 ░ ░  ░  ░░░ ░ ░ ░  ░  ░    ░       ▒ ░   ░   ░ ░    ░      ░    ▒ ░  ░ ░     ░ ░      ░     ░░   ░
 ░       ░           ░            ░           ░           ░    ░      ░  ░    ░  ░   ░  ░   ░
 ░                                                                                         (2025)-->
-<body>
-  <header>
+  <body>
+    <header>
       <h1>{{ config.title }}</h1>
       <nav>
-          <a href="/">Home</a>
-          <a href="/about">About</a>
-          <a href="/blog">Blog</a>
-          <a href="/contact">Contact</a>
+        <a href="{{ get_url(path="/") }}">Home</a>
+        <a href="{{ get_url(path="/about/") }}">About</a>
+        <a href="{{ get_url(path="/blog/") }}">Blog</a>
+        <a href="{{ get_url(path="/contact/") }}">Contact</a>
       </nav>
-  </header>
-  <main>
-      {%- block content %}
-      {%- endblock %}
-  </main>
-  <footer class="footer">
-    <div class="social-links">
-        <a href="https://www.linkedin.com/in/dustinm" target="_blank" rel="noopener noreferrer">
-          <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="32" height="32" viewBox="0 0 30 30">
-              <path d="M24,4H6C4.895,4,4,4.895,4,6v18c0,1.105,0.895,2,2,2h18c1.105,0,2-0.895,2-2V6C26,4.895,25.105,4,24,4z M10.954,22h-2.95 v-9.492h2.95V22z M9.449,11.151c-0.951,0-1.72-0.771-1.72-1.72c0-0.949,0.77-1.719,1.72-1.719c0.948,0,1.719,0.771,1.719,1.719 C11.168,10.38,10.397,11.151,9.449,11.151z M22.004,22h-2.948v-4.616c0-1.101-0.02-2.517-1.533-2.517 c-1.535,0-1.771,1.199-1.771,2.437V22h-2.948v-9.492h2.83v1.297h0.04c0.394-0.746,1.356-1.533,2.791-1.533 c2.987,0,3.539,1.966,3.539,4.522V22z"></path>
-          </svg>
-        </a>
-        <a href="mailto:dustin.miller@gmail.com" target="_blank" rel="noopener noreferrer">
-          <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="32" height="32" viewBox="0 0 20 20">
-                <path d="M2.003 5.884 10 9.882l7.997-3.998A2 2 0 0 0 16 4H4a2 2 0 0 0-1.997 1.884z"></path>
-                <path d="m18 8.118-8 4-8-4V14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8.118z"></path>
-          </svg>
-        </a>
-        <a href="https://github.com/dustinmiller" target="_blank" rel="noopener noreferrer">
-          <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="32" height="32" viewBox="0 0 25 25">
-                <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path>
-          </svg>
-        </a>
-        <a href="https://dustinmiller.win/atom.xml" target="_blank" rel="noopener noreferrer">
-          <svg class="svg-icon" x="0px" y="0px" width="32" height="32" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
-            <path d="M319.68 607.92a80 80 0 1 0 0 160 80 80 0 0 0 0-160zM240 417.168v80C384 497.152 510.464 624 510.464 768h80C590.464 576 432 417.168 240 417.168z m0-177.248v80C480 319.92 687.696 528 687.696 768h80C767.696 480 528 239.92 240 239.92zM776 96h-544A136 136 0 0 0 96 232v544a136 136 0 0 0 136 136h544a136 136 0 0 0 136-136v-544A136 136 0 0 0 776 96zM832 776a56 56 0 0 1-56 56h-544a56 56 0 0 1-56-56v-544a56 56 0 0 1 56-56h544a56 56 0 0 1 56 56v544z" fill="#565D64" />
-          </svg>
-        </a>
+    </header>
+    <main>
+      {% block content %}
+      {% endblock content %}
+    </main>
+    <footer class="footer">
+      <div class="social-links">
+        {% if config.extra.linkedin %}<a href="https://linkedin.com/in/{{ config.extra.linkedin }}" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="32" height="32" viewBox="0 0 30 30"><path d="M24,4H6C4.895,4,4,4.895,4,6v18c0,1.105,0.895,2,2,2h18c1.105,0,2-0.895,2-2V6C26,4.895,25.105,4,24,4z M10.954,22h-2.95 v-9.492h2.95V22z M9.449,11.151c-0.951,0-1.72-0.771-1.72-1.72c0-0.949,0.77-1.719,1.72-1.719c0.948,0,1.719,0.771,1.719,1.719 C11.168,10.38,10.397,11.151,9.449,11.151z M22.004,22h-2.948v-4.616c0-1.101-0.02-2.517-1.533-2.517 c-1.535,0-1.771,1.199-1.771,2.437V22h-2.948v-9.492h2.83v1.297h0.04c0.394-0.746,1.356-1.533,2.791-1.533 c2.987,0,3.539,1.966,3.539,4.522V22z"></path></svg></a>{% endif %}
+        {% if config.extra.email %}<a href="mailto:{{ config.extra.email }}" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="32" height="32" viewBox="0 0 20 20"><path d="M2.003 5.884 10 9.882l7.997-3.998A2 2 0 0 0 16 4H4a2 2 0 0 0-1.997 1.884z"></path><path d="m18 8.118-8 4-8-4V14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8.118z"></path></svg></a>{% endif %}
+        {% if config.extra.github %}<a href="https://github.com/{{ config.extra.github }}" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="32" height="32" viewBox="0 0 25 25"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg></a>{% endif %}
+        <a href="{{ get_url(path="atom.xml") }}" target="_blank" rel="noopener noreferrer"><svg class="svg-icon" x="0px" y="0px" width="32" height="32" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M319.68 607.92a80 80 0 1 0 0 160 80 80 0 0 0 0-160zM240 417.168v80C384 497.152 510.464 624 510.464 768h80C590.464 576 432 417.168 240 417.168z m0-177.248v80C480 319.92 687.696 528 687.696 768h80C767.696 480 528 239.92 240 239.92zM776 96h-544A136 136 0 0 0 96 232v544a136 136 0 0 0 136 136h544a136 136 0 0 0 136-136v-544A136 136 0 0 0 776 96zM832 776a56 56 0 0 1-56 56h-544a56 56 0 0 1-56-56v-544a56 56 0 0 1 56-56h544a56 56 0 0 1 56 56v544z" fill="#565D64" /></svg></a>
         &copy; {{ now() | date(format="%Y") }} {{ config.extra.author }}
-    </div>
-    <button class="dark-mode-toggle" id="theme-toggle">🌓</button>
-  </footer>
-<script>
-const themeToggle = document.getElementById('theme-toggle');
-function setTheme(theme) {
-  document.documentElement.setAttribute('data-theme', theme);
-  localStorage.setItem('theme', theme);
-}
-function toggleTheme() {
-  const currentTheme = localStorage.getItem('theme') || 'light';
-  const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-  setTheme(newTheme);
-}
-themeToggle.addEventListener('click', toggleTheme);
-document.addEventListener('DOMContentLoaded', () => {
-  const savedTheme = localStorage.getItem('theme') || 'light';
-  setTheme(savedTheme);
-});
-</script>
-</body>
+      </div>
+    </footer>
+    <script>document.addEventListener('DOMContentLoaded', () => { document.documentElement.setAttribute('data-theme', 'dark'); });</script>
+  </body>
 </html>
