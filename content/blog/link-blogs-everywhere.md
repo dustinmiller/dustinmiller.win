@@ -12,4 +12,4 @@ So thanks to [Xuanwo's post](https://xuanwo.io/links/2025/01/link-blog/) and [Si
 
 Deepseek and ChatGPT helped with the CSS and some of the templating too ;)
 
-<div style="text-align:center;padding-top:10px;"><img src="/woody-buzz-everywhere.jpg" alt="woody-buzz-everywhere meme" height="375" width="666"></div>
+<div style="text-align:center;padding-top:10px;"><img src="/images/woody-buzz-everywhere.jpg" alt="woody-buzz-everywhere meme" height="375" width="666"></div>

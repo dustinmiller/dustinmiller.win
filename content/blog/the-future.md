@@ -1,6 +1,6 @@
 +++
 title = "From the future"
-date = 2025-05-01
+date = 2060-10-07
 description = "Nobody really understands time anyways"
 +++
 

@@ -1,43 +1,29 @@
 +++
-template = "page.html"
+title = "About Me"
+description = "Learn more about my background and interests"
 +++
-# About me
 
-I'm a nerd living in Phoenix, AZ
+![Stonks!](../images/stonks-ghibli.png "Stonks go up!")
 
-I've worked on some awesome datacenter projects
+Hello! I'm a passionate developer who loves working on awesome datacenter projects.
 
-I like music and traveling
+## Background
 
-## Interests
-
-- Operating systems
 - Web development
-- Open source
+- Software engineering
+- Operating systems
 - Automation
-- Self hosting
 
-<pre style="float: right; margin-top: -420px">
-                    @@@@@@@@@@                    
-                  @@@@@@@@@@@@@@@@@@              
-                 @@@@@@@@@@@@@@@@@@@@             
-                 @@@@@@@@@@@@    @@@@             
-                @@@@@@@@@        @@@@@            
-                 @@               @@@             
-                 @@ @@@@      @@@@ @@             
-               @@@@@@@@@@@  @@@@@@@@@@@           
-              @  @@  @@  @ @@  @@  @@  @          
-              @@ @@@@@@@@@  @@@@@@@@@ @@          
-                 @        @@@       @             
-                 @   @@@            @             
-                 @@  @@  @@@@      @@             
-                  @@   @@@@@@     @@              
-                    @@          @@                
-                      @@@    @@@                  
-                      @  @@@@  @                  
-               @@@@@@@@@@    @@@@@@@@@@           
-             @@@@@@@@@@@@@  @@@@@@@@@@@@@         
-           @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@       
-          @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@      
-          @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@      
-</pre>
+## Skills
+
+- **Languages**: Bash, Python, Go, Rust
+- **Frontend**: xHTML/CSS, Javascript
+- **Tools**: Linux, Git, Docker
+
+## Get in Touch
+
+Feel free to reach out if you'd like to collaborate on a project or just want to chat about technology!
+
+- Email: dustin@stonks.win
+- GitHub: [dustinmiller](https://github.com/dustinmiller)
+- LinkedIn: [dustinm](https://linkedin.com/in/dustinm)

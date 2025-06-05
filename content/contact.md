@@ -1,7 +1,5 @@
 +++
-template = "page.html"
+title = "Contact"
 +++
 
-## Contact Me
-
-You can reach me at [dustin.miller@gmail.com](mailto:dustin.miller@gmail.com)
+You can reach me at [dustin@stonks.win](mailto:dustin@stonks.win)
