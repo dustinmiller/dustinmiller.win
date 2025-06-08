@@ -43,7 +43,7 @@
       a{color:var(--accent);text-decoration:none}
       a:focus-visible,a:hover{text-decoration:underline}
       :root{--background-color:#282a36;--text-color:#f8f8f2;--accent:#bd93f9;--comment:#6272a4;--cyan:#8be9fd;--green:#50fa7b;--orange:#ffb86c;--pink:#ff79c6;--purple:#bd93f9;--red:#ff5555;--yellow:#f1fa8c}
-      .page-content{line-height:1.8;margin-top:3rem}
+      .page-content{line-height:1.8;margin-top:0}
       .page-content p:first-of-type{font-size:1.1rem;font-weight:400;line-height:1.6;margin-bottom:1.5rem}
       .page-content h2 + p,
       .page-content h3 + p{text-indent:1.5rem}
@@ -55,7 +55,7 @@
       .taxonomy-grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
       .taxonomy-item{padding:1rem;border:1px solid #eee;border-radius:4px}
       [data-theme=dark] .taxonomy-item{border-color:#444}
-      .page-content img{border-radius:8px;max-width:75%;height:auto;display:block;margin:1.5rem auto}
+      .page-content img{border-radius:8px;max-width:75%;height:auto;display:block;margin:-1rem auto 1.5rem auto}
       .page-header{border-bottom:none}
     </style>
     {% if config.generate_feeds %}<link rel="alternate" type="application/atom+xml" title="RSS" href="{{ get_url(path="atom.xml") }}">{% endif %}
