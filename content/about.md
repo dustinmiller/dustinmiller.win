@@ -3,7 +3,7 @@ title = "About Me"
 description = "Learn more about my background and interests"
 +++
 
-![Stonks!](../images/stonks-ghibli.png "Stonks go up!")
+![Dog typing](../images/dog.gif "Good dog!")
 
 Hello! I'm a passionate developer who loves working on awesome datacenter projects.
 
